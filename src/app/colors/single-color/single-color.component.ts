@@ -10,18 +10,22 @@ import { Color } from '../model/color';
 })
 export class SingleColorComponent implements OnInit {
   public color: Color;
+  public errorMessage: string;
 
   constructor(private activatedRoute: ActivatedRoute, private colorsService: ColorsService) {
   }
 
   async ngOnInit(): Promise<void> {
-    console.log(this.activatedRoute.snapshot.params);
     const id: string = this.activatedRoute.snapshot.params.id;
     const colorId: number = Number.parseInt(id, 10);
-    // "123" -> 123
-    // "1" -> 1
-
-    this.color = await this.colorsService.getSingleColor(colorId);
+    if (!Number.isNaN(colorId)) {
+      this.color = await this.colorsService.getSingleColor(colorId); // pobranie koloru
+      if (this.color === undefined) {
+        this.errorMessage = 'No such color';
+      }
+    } else {
+      this.errorMessage = 'Not a valid color ID';
+    }
   }
 
 }
