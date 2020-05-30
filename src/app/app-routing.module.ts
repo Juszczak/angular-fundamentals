@@ -17,6 +17,7 @@ const routes: Routes = [
     redirectTo: 'about',
     pathMatch: 'full',
   },
+  { path: 'colors', loadChildren: () => import('./colors/colors.module').then(m => m.ColorsModule) },
 ];
 
 @NgModule({
