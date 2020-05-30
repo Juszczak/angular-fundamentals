@@ -14,10 +14,13 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'about',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
-  { path: 'colors', loadChildren: () => import('./colors/colors.module').then(m => m.ColorsModule) },
+  {
+    path: 'colors',
+    loadChildren: () => import('./colors/colors.module').then(m => m.ColorsModule),
+  },
 ];
 
 @NgModule({
