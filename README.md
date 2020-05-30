@@ -24,5 +24,5 @@ ng generate comopnent about
 ## Generowanie modułu z routingiem
 
 ```
-ng generate module --routing --route colors -m app colors
+ng generate module colors --routing --route colors --module app
 ```
