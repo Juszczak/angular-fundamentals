@@ -9,10 +9,15 @@ import {Color} from '../model/color';
 })
 export class ColorsListComponent implements OnInit {
   public colors: Color[];
+  public highlight = true;
 
   constructor(private colorsService: ColorsService) {}
 
   async ngOnInit(): Promise<void> {
     this.colors = await this.colorsService.getColors();
+  }
+
+  public toggle(): void {
+    this.highlight = !this.highlight;
   }
 }

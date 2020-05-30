@@ -5,9 +5,10 @@ import {ColorsRoutingModule} from './colors-routing.module';
 import {ColorsComponent} from './colors.component';
 import {DisplayColorPipe} from './display-color.pipe';
 import {SingleColorComponent} from './single-color/single-color.component';
+import { ColorHighlightDirective } from './color-highlight.directive';
 
 @NgModule({
-  declarations: [ColorsComponent, ColorsListComponent, SingleColorComponent, DisplayColorPipe],
+  declarations: [ColorsComponent, ColorsListComponent, SingleColorComponent, DisplayColorPipe, ColorHighlightDirective],
   imports: [CommonModule, ColorsRoutingModule],
   exports: [DisplayColorPipe],
 })

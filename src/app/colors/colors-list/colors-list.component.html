@@ -1,5 +1,16 @@
-<ul>
-  <li *ngFor="let color of colors">
-    <a routerLink="/colors/{{ color.id }}">{{ color | displayColor }}</a>
-  </li>
+<button (click)="toggle()">toggle</button>
+
+<ul *ngIf="colors?.length; else emptyBlock">
+  <ng-container *ngFor="let color of colors">
+    <li appColorHighlight
+        [highlightColor]="color.color"
+        [highlightAlways]="highlight"
+      >
+      <a routerLink="/colors/{{ color.id }}">{{ color | displayColor }}</a>
+    </li>
+  </ng-container>
 </ul>
+
+<ng-template #emptyBlock>
+  The list is empty.
+</ng-template>
