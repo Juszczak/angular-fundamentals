@@ -1,8 +1,5 @@
 <ul>
   <li *ngFor="let color of colors">
-    <a routerLink="/colors/{{ color.name }}">{{ color.name }}</a>
+    <a routerLink="/colors/{{ color.id }}">{{ color | displayColor }}</a>
   </li>
-  <!-- <li><a routerLink="/colors/red">Red</a></li> -->
-  <!-- <li><a routerLink="/colors/green">Green</a></li> -->
-  <!-- <li><a routerLink="/colors/blue">Blue</a></li> -->
 </ul>

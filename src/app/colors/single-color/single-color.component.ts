@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ColorsService } from '../colors.service';
+import { Color } from '../model/color';
 
 @Component({
   selector: 'app-single-color',
@@ -7,14 +9,19 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./single-color.component.scss']
 })
 export class SingleColorComponent implements OnInit {
-  public colorName: string;
+  public color: Color;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private colorsService: ColorsService) {
   }
 
-  ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params.id;
-    this.colorName = id;
+  async ngOnInit(): Promise<void> {
+    console.log(this.activatedRoute.snapshot.params);
+    const id: string = this.activatedRoute.snapshot.params.id;
+    const colorId: number = Number.parseInt(id, 10);
+    // "123" -> 123
+    // "1" -> 1
+
+    this.color = await this.colorsService.getSingleColor(colorId);
   }
 
 }
