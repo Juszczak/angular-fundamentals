@@ -4,7 +4,6 @@ import {ColorsComponent} from './colors.component';
 import { ColorsListComponent } from './colors-list/colors-list.component';
 import { SingleColorComponent } from './single-color/single-color.component';
 
-// /colors/[....]
 const routes: Routes = [
   {
     path: '',
