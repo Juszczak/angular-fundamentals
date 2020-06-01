@@ -2,10 +2,11 @@
 
 <ul *ngIf="colors?.length; else emptyBlock">
   <ng-container *ngFor="let color of colors">
-    <li appColorHighlight
-        [highlightColor]="color.color"
-        [highlightAlways]="highlight"
-      >
+    <li
+      appColorHighlight
+      [highlightColor]="color.color"
+      [highlightAlways]="highlight"
+    >
       <a routerLink="/colors/{{ color.id }}">{{ color | displayColor }}</a>
     </li>
   </ng-container>

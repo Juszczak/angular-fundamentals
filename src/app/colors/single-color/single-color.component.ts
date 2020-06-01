@@ -6,21 +6,23 @@ import { Color } from '../model/color';
 @Component({
   selector: 'app-single-color',
   templateUrl: './single-color.component.html',
-  styleUrls: ['./single-color.component.scss']
+  styleUrls: ['./single-color.component.scss'],
 })
 export class SingleColorComponent implements OnInit, OnDestroy {
   public color: Color;
   public errorMessage: string;
 
-  constructor(private activatedRoute: ActivatedRoute, private colorsService: ColorsService) {
-  }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private colorsService: ColorsService,
+  ) {}
 
   async ngOnInit(): Promise<void> {
     console.log('ngOnInit');
     const id: string = this.activatedRoute.snapshot.params.id;
     const colorId: number = Number.parseInt(id, 10);
     if (!Number.isNaN(colorId)) {
-      this.color = await this.colorsService.getSingleColor(colorId); // pobranie koloru
+      this.color = await this.colorsService.getSingleColor(colorId);
       if (this.color === undefined) {
         this.errorMessage = 'No such color';
       }
@@ -32,5 +34,4 @@ export class SingleColorComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     console.log('ngOnDestroy');
   }
-
 }

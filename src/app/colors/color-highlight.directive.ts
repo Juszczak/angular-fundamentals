@@ -1,7 +1,16 @@
-import { Directive, ElementRef, Input, HostListener, OnInit, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChange,
+  SimpleChanges,
+} from '@angular/core';
 
 @Directive({
-  selector: '[appColorHighlight]'
+  selector: '[appColorHighlight]',
 })
 export class ColorHighlightDirective implements OnInit, OnChanges {
   @Input() public highlightColor = 'yellow';
@@ -17,8 +26,7 @@ export class ColorHighlightDirective implements OnInit, OnChanges {
     }
   }
 
-  constructor(private elementRef: ElementRef) {
-  }
+  constructor(private elementRef: ElementRef) {}
 
   public highlight(color: string) {
     this.elementRef.nativeElement.style.backgroundColor = color;
@@ -41,8 +49,6 @@ export class ColorHighlightDirective implements OnInit, OnChanges {
       } else {
         this.highlight(null);
       }
-
     }
   }
-
 }

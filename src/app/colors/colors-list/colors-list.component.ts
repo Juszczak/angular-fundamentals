@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {ColorsService} from '../colors.service';
-import {Color} from '../model/color';
+import { Component, OnInit } from '@angular/core';
+import { ColorsService } from '../colors.service';
+import { Color } from '../model/color';
 
 @Component({
   selector: 'app-colors-list',
