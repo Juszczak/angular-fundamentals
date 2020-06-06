@@ -57,3 +57,12 @@ cd src/app/colors
 
 ng generate pipe DisplayColor
 ```
+
+
+## Git
+
+```
+git clean -df
+
+git checkout
+```
