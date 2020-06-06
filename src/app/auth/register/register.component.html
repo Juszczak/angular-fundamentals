@@ -1,1 +1,65 @@
-<p>register works!</p>
+<h2>Register</h2>
+
+<form (ngSubmit)="onSubmit($event)"
+      #registerForm="ngForm"
+  >
+
+  <div>
+    <label>
+      <span>Email</span>
+      <input type="email"
+            [(ngModel)]="user.email"
+            name="email"
+            #email="ngModel"
+            pattern="[a-z]@[a-z]"
+            required
+      />
+    </label>
+
+    <!-- {{ email.errors | json }} -->
+
+    <!-- touched  -  untouched -->
+    <!-- dirty    -  pristine -->
+    <!-- valid    -  invalid -->
+
+    <span *ngIf="email.dirty && email.errors?.required">
+      This filed is required
+    </span>
+
+    <span *ngIf="email.errors?.pattern">
+      Wront email format
+    </span>
+
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input type="password"
+          [(ngModel)]="user.password"
+          name="password"
+          #password="ngModel"
+          required
+          minlength="8"
+    />
+
+    <span *ngIf="password.dirty && password.errors?.required">
+      This field is required
+    </span>
+
+    <span *ngIf="password.dirty && password.errors?.minlength">
+      This field should be at least 8 chars
+    </span>
+
+  </div>
+
+
+  <button type="submit"
+          [disabled]="registerForm.invalid">
+    Register
+  </button>
+
+  <button type="button">Another button</button>
+
+  <button type="reset">Reset</button>
+
+</form>
