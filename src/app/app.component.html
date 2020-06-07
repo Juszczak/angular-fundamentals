@@ -1,8 +1,16 @@
 <mat-toolbar>
-  <a mat-flat-button color="primary" routerLink="home">Home</a>
-  <a mat-flat-button color="accent" routerLink="about">About</a>
-  <a mat-flat-button color="warn" routerLink="colors/list">Colors</a>
-  <a mat-flat-button color="primary" routerLink="settings">Settings</a>
+  <a mat-flat-button color="primary" routerLink="home">
+    {{ 'nav.home' | translate }}
+  </a>
+  <a mat-flat-button color="accent" routerLink="about">
+    {{ 'nav.about' | translate }}
+  </a>
+  <a mat-flat-button color="warn" routerLink="colors/list">
+    {{ 'nav.colors' | translate }}
+  </a>
+  <a mat-flat-button color="primary" routerLink="settings">{{
+    'nav.settings' | translate
+    }}</a>
 
   <div class="fill"></div>
 
