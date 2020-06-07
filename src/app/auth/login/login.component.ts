@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
+import { AuthService } from '../auth.service';
+import { AuthUser } from '../model/auth-user.interface';
+import { AuthResponse } from '../model/auth-response.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -50,14 +54,30 @@ export class LoginComponent implements OnInit {
     }),
   );
 
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   public ngOnInit(): void {
     const valueChanges$ = this.formGroup.valueChanges;
     const statusChanges$ = this.formGroup.statusChanges;
 
     statusChanges$.subscribe((status) => {});
-
   }
 
+  public onSubmit($event) {
+    if (this.formGroup.valid) {
+      const user: AuthUser = this.formGroup.value;
+      this.authService.loginUser(user).subscribe((response: AuthResponse) => {
+        if (response.error) {
+          console.log('login error');
+          return;
+        }
+
+        if (response.token) {
+          sessionStorage.setItem('session-token', response.token);
+          console.log('login success!');
+          this.router.navigateByUrl('/');
+        }
+      });
+    }
+  }
 }
