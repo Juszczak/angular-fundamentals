@@ -1,25 +1,26 @@
-<nav>
-  <a routerLink="home">Home</a>
-  <a routerLink="about">About</a>
-  <a routerLink="colors/list">Colors</a>
-  <a routerLink="settings">Settings</a>
+<mat-toolbar>
+  <a mat-flat-button color="primary" routerLink="home">Home</a>
+  <a mat-flat-button color="accent" routerLink="about">About</a>
+  <a mat-flat-button color="warn" routerLink="colors/list">Colors</a>
+  <a mat-flat-button color="primary" routerLink="settings">Settings</a>
 
+  <div class="fill"></div>
 
   <div *ngIf="isUserLogged$ | async; else notAuthorized">
-    <button (click)="logout()">Log out</button>
+    <button mat-raised-button (click)="logout()">Log out</button>
   </div>
 
   <ng-template #notAuthorized>
     <div>
-      <a routerLink="auth/register">
+      <a mat-stroked-button routerLink="auth/register">
         Register
       </a>
-      <a routerLink="auth/login">
+      <a mat-button routerLink="auth/login">
         Log in
       </a>
     </div>
   </ng-template>
 
-</nav>
+</mat-toolbar>
 
 <router-outlet></router-outlet>
