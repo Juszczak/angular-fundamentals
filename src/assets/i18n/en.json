@@ -1,0 +1,10 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "colors": "Colors",
+    "settings": "Settings",
+    "login": "Log in",
+    "register": "Register"
+  }
+}

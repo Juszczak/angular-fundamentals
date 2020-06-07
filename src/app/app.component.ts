@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterContentInit {
   public isUserLogged$;
 
   constructor(
@@ -21,28 +21,6 @@ export class AppComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    this.translateService.setTranslation('pl', {
-      nav: {
-        home: 'Strona główna',
-        about: 'O mnie',
-        colors: 'Kolory',
-        settings: 'Ustawienia',
-        login: 'Logowanie',
-        register: 'Rejestracja',
-      }
-    });
-
-    this.translateService.setTranslation('en', {
-      nav: {
-        home: 'Home',
-        about: 'About',
-        colors: 'Colors',
-        settings: 'Settings',
-        login: 'Log in',
-        register: 'Register',
-      }
-    });
-
     this.translateService.setDefaultLang('pl');
 
     this.isUserLogged$ = this.authService.isUserLogged$;
@@ -50,13 +28,15 @@ export class AppComponent implements OnInit {
     const routerEvents$ = this.router.events;
 
     routerEvents$
-      .pipe(
-        filter((event) => event instanceof NavigationEnd)
-      )
+      .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.pageTitleService.setTitle(event.url);
       });
+  }
 
+  public ngAfterContentInit(): void {
+    /* const translations = this.translateService.instant('nav.home'); */
+    /* console.log(translations); */
   }
 
   public logout() {

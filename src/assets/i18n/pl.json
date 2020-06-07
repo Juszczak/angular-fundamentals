@@ -1,0 +1,10 @@
+{
+  "nav": {
+    "home": "Strona główna",
+    "about": "O mnie",
+    "colors": "Kolory",
+    "settings": "Ustawienia",
+    "login": "Logowanie",
+    "register": "Rejestracja"
+  }
+}
