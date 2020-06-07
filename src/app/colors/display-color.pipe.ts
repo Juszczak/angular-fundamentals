@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Color } from './model/color';
-import { unescape } from 'querystring';
 
 @Pipe({
   name: 'displayColor',

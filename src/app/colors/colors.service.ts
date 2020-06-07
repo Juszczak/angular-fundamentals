@@ -1,6 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Color } from './model/color';
-import { HttpClient } from '@angular/common/http';
 import { ColorsListResponse } from './model/colors-list-response';
 import { SingleColorResponse } from './model/single-color-response';
 

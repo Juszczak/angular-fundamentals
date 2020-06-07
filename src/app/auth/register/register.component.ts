@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { AuthUser } from '../model/auth-user.interface';
 
 @Component({
   selector: 'app-register',
@@ -7,7 +8,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements AfterViewInit, OnInit {
-  public user = {
+  public user: AuthUser = {
     email: '',
     password: '',
   };
@@ -17,17 +18,11 @@ export class RegisterComponent implements AfterViewInit, OnInit {
 
   constructor(private authService: AuthService) {}
 
-  public ngOnInit(): void {
-    console.log(this.emailNgModel);
-  }
+  public ngOnInit(): void {}
 
-  public ngAfterViewInit(): void {
-    console.log(this.ngForm);
-    console.log(this.emailNgModel);
-  }
+  public ngAfterViewInit(): void {}
 
   public async onSubmit($event) {
     const req = await this.authService.registerUser(this.user);
-    console.log(req);
   }
 }

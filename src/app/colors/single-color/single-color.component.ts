@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ColorsService } from '../colors.service';
 import { Color } from '../model/color';
@@ -18,7 +18,6 @@ export class SingleColorComponent implements OnInit, OnDestroy {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    console.log('ngOnInit');
     const id: string = this.activatedRoute.snapshot.params.id;
     const colorId: number = Number.parseInt(id, 10);
     if (!Number.isNaN(colorId)) {
@@ -31,7 +30,5 @@ export class SingleColorComponent implements OnInit, OnDestroy {
     }
   }
 
-  public ngOnDestroy(): void {
-    console.log('ngOnDestroy');
-  }
+  public ngOnDestroy(): void {}
 }

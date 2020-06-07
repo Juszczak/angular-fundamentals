@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { map, startWith } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
-import { AuthUser } from '../model/auth-user.interface';
 import { AuthResponse } from '../model/auth-response.interface';
-import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthUser } from '../model/auth-user.interface';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   public formGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
   });
 
   public buttonDisabled$ = this.formGroup.statusChanges.pipe(
@@ -80,7 +83,6 @@ export class LoginComponent implements OnInit {
         }
 
         if (response.token) {
-          sessionStorage.setItem('session-token', response.token);
           this.snackBar.open('Logged in!', null, {
             duration: 1000,
             verticalPosition: 'top',
