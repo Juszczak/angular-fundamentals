@@ -7,12 +7,12 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  public isUserLogged = false;
+  public isUserLogged$;
 
   constructor(private authService: AuthService) {}
 
-  ngOnInit() {
-    this.isUserLogged = this.authService.isUserLogged();
+  public ngOnInit() {
+    this.isUserLogged$ = this.authService.isUserLogged$;
   }
 
   public logout() {

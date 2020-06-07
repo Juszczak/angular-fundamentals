@@ -5,18 +5,20 @@
   <a routerLink="settings">Settings</a>
 
 
-  <div *ngIf="isUserLogged">
+  <div *ngIf="isUserLogged$ | async; else notAuthorized">
     <button (click)="logout()">Log out</button>
   </div>
 
-  <div *ngIf="!isUserLogged">
-    <a routerLink="auth/register">
-      Register
-    </a>
-    <a routerLink="auth/login">
-      Log in
-    </a>
-  </div>
+  <ng-template #notAuthorized>
+    <div>
+      <a routerLink="auth/register">
+        Register
+      </a>
+      <a routerLink="auth/login">
+        Log in
+      </a>
+    </div>
+  </ng-template>
 
 </nav>
 
