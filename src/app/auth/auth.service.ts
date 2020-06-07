@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { AuthUser } from './model/auth-user.interface';
 import { AuthResponse } from './model/auth-response.interface';
 import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { catchError } from 'rxjs/operators';
 export class AuthService {
   private static readonly API_URL = 'https://reqres.in/api';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   public registerUser(user: AuthUser): Promise<unknown> {
     return this.httpClient.post(AuthService.API_URL + '/register', user).toPromise();
@@ -32,5 +33,6 @@ export class AuthService {
 
   public logOut() {
     sessionStorage.removeItem('session-token');
+    this.router.navigateByUrl('/');
   }
 }

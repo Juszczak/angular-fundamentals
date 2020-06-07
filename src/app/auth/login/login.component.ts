@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
         if (response.token) {
           sessionStorage.setItem('session-token', response.token);
           console.log('login success!');
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/settings');
         }
       });
     }

@@ -4,7 +4,12 @@
   <a routerLink="colors/list">Colors</a>
   <a routerLink="settings">Settings</a>
 
-  <div>
+
+  <div *ngIf="isUserLogged">
+    <button (click)="logout()">Log out</button>
+  </div>
+
+  <div *ngIf="!isUserLogged">
     <a routerLink="auth/register">
       Register
     </a>
