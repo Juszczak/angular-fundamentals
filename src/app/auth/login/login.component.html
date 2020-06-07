@@ -17,6 +17,10 @@
       type="password"
       formControlName="password"
       placeholder="Password" />
+
+    <span class="message">
+      {{ passwordMessage$ | async }}
+    </span>
   </div>
 
   <div>

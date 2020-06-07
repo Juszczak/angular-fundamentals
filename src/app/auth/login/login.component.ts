@@ -33,6 +33,23 @@ export class LoginComponent implements OnInit {
     }),
   );
 
+  public passwordMessage$ = this.formGroup.valueChanges.pipe(
+    map((value) => {
+      const passwordErrors = this.formGroup.controls.password?.errors;
+      if (passwordErrors && this.formGroup.controls.password?.dirty) {
+        if (passwordErrors.required) {
+          return 'Password is required';
+        }
+        if (passwordErrors.minlength) {
+          return 'Password should have at least 8 characters';
+        }
+        return '';
+      } else {
+        return '';
+      }
+    }),
+  );
+
   constructor() {}
 
   public ngOnInit(): void {
