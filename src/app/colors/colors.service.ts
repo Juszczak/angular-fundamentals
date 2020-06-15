@@ -1,3 +1,6 @@
+/**
+ * Serwis służący do komunikacji z API protokołem HTTP
+ */
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Color } from './model/color';

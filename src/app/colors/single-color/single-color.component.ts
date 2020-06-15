@@ -17,6 +17,10 @@ export class SingleColorComponent implements OnInit, OnDestroy {
     private colorsService: ColorsService,
   ) {}
 
+  /**
+   * W metodzie `ngOnInit` następuje pobranie aktualnego stanu ścieżki aplikacji,
+   * na podstawie której wywoływana jest metoda `getSingleColor` z serwisu kolorów.
+   */
   async ngOnInit(): Promise<void> {
     const id: string = this.activatedRoute.snapshot.params.id;
     const colorId: number = Number.parseInt(id, 10);

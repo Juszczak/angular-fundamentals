@@ -14,10 +14,16 @@ export class ColorsListComponent implements OnInit {
 
   constructor(private colorsService: ColorsService, private title: Title) {}
 
+  /**
+   * Pobranie listy kolorów poprzez wywołanie metody serwisu i przypisanie do pola w klasie.
+   */
   async ngOnInit(): Promise<void> {
     this.colors = await this.colorsService.getColors();
   }
 
+  /**
+   * Metoda zamieniająca wartości pola `highlight` na `true` bądź `false`
+   */
   public toggle(): void {
     this.highlight = !this.highlight;
   }

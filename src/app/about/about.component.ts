@@ -1,3 +1,6 @@
+/**
+ * Prosty komponent wyświetlający zawartość swojego szablonu.
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

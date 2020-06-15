@@ -1,3 +1,7 @@
+/**
+ * Główny moduł aplikacji deklarujący komponenty głównego poziomu,
+ * oraz importujący zależności dla całej aplikacji.
+ */
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -20,21 +24,33 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
+  /* Deklaracja komponentów danego modułu (UWAGA! Każda z klas musi zostać zaimportowana na górze pliku) */
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
     SettingsComponent,
   ],
+  /* Moduły importowane przez moduł (UWAGA! Każda z klas musi zostać zaimportowana na górze pliku) */
   imports: [
+    /* Bazowe moduły Angulara */
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+
+    /* Moduł z deklaracjami ścieżek aplikacji */
+    AppRoutingModule,
+
+    /* Moduł animacji wykorzystywany przez Angular Material */
     BrowserAnimationsModule,
+
+    /* Moduły komponentów Angular Material */
     MatToolbarModule,
     MatButtonModule,
     MatSelectModule,
-    ReactiveFormsModule,
+    MatSnackBarModule,
+
+    /* Moduł tłumaczeń z biblioteki `ngx-translate` */
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -43,9 +59,13 @@ export function createTranslateLoader(http: HttpClient) {
       },
       defaultLanguage: 'pl',
     }),
-    MatSnackBarModule,
   ],
   providers: [],
+  /**
+   * Główny moduł aplikacji deklaruje pole `bootstrap`, informujące o komponencie,
+   * który ma zostać użyty w przypadku przekazania tego modułu do metody `bootstrapModule`
+   * > (zobacz plik ../main.ts)
+   */
   bootstrap: [AppComponent],
 })
 export class AppModule {}
